@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "16.14.2"
+  },
   "name": "daphnes_ui",
   "version": "1.0.0",
   "description": "The files for the frontend of Daphnes bar app (v2)",
