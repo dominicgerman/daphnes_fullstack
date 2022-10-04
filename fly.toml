@@ -8,9 +8,6 @@ processes = []
 [build]
   builder = "heroku/buildpacks:20"
 
-[deploy]
-  release_command = "npm run build:ui"
-
 [env]
   PORT = "8080"
 
@@ -19,7 +16,7 @@ processes = []
   auto_rollback = true
 
 [processes]
-  app = "cross-env NODE_ENV=production node index.js"
+  app = "node index.js"
 
 [[services]]
   internal_port = 8080
