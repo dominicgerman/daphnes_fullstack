@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Daphnes is a landing page for a home-bar in Chicago. The home belongs to Dominic and Victoria German and the bar is 'owned' by their cat, Daphne."
+    />
+
+    <!-- FONTS and ICONS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="/imgs/favicon2.png" />
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="./css/queries.css" />
+
+    <!-- SCRIPTS -->
+    <script type="module" src="./js/script.js" type="module"></script>
+
+    <title>Daphne's</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <a class="nav-header" href="https://daphnes.fly.dev/">Daphne's</a>
+        <ul class="nav-list">
+          <li>
+            <a class="home-nav" href="#">Home</a>
+          </li>
+          <li>
+            <a class="recipes-nav" href="./html/recipeIndex.html">Recipes</a>
+          </li>
+          <li><a class="about-nav" href="./html/about.html">About</a></li>
+        </ul>
+        <button class="btn-mobile-nav">
+          <a href="#" class="hamburger-icon"></a>
+        </button>
+      </nav>
+      <section class="section-home">
+        <div class="home">
+          <p class="home-text">
+            New menu every friday at noon. <a class="menu-link">Today's menu</a>
+          </p>
+          <div class="home-img-box box-1">
+            <img
+              class="home-img"
+              src="./imgs/cocktail-imgs/fifth-of-never.jpg"
+              alt="featured cocktail 1"
+            />
+          </div>
+          <div class="home-img-box box-2">
+            <img
+              class="home-img"
+              src="./imgs/cocktail-imgs/juliette.jpg"
+              alt="featured cocktail 3"
+            />
+          </div>
+          <div class="home-img-box box-3">
+            <img
+              class="home-img"
+              src="./imgs/cocktail-imgs/vieux-carre.jpg"
+              alt="featured cocktail 2"
+            />
+          </div>
+        </div>
+        <div class="menu-container">
+          <div class="modal hidden"></div>
+        </div>
+        <div class="overlay hidden"></div>
+      </section>
+    </div>
+  </body>
+</html>

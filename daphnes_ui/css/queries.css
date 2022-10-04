@@ -1,0 +1,305 @@
+/* ********************************************/
+/* MEDIA QUERIES */
+/* ****************************************** */
+
+/* rem and em do NOT depend on html font-size in media queries! 
+   Instead 1rem = 1em = 16px */
+
+@media (max-width: 80em) {
+  .content-container {
+    padding-left: 0;
+  }
+  .home-text {
+    font-size: 2rem;
+    line-height: inherit;
+  }
+}
+
+/* BELOW  944px (Tablets) */
+
+@media (max-width: 60em) {
+  .thumbnail__text {
+    font-size: 1.6rem;
+  }
+  .index-container__content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .modal {
+    top: 25%;
+    left: 20%;
+    right: 20%;
+    transform: translate(0%, -20%);
+    max-width: 95%;
+    padding: 7rem;
+  }
+
+  .about-page__text {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 50em) {
+  .results-message {
+    position: static;
+  }
+
+  .error-msg {
+    padding: 6rem;
+  }
+
+  .index-container__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .recipe-container__content {
+    flex-direction: column-reverse;
+  }
+
+  .short-description {
+    margin-bottom: 0;
+  }
+
+  .home-text {
+    font-size: 1.6rem;
+  }
+  .modal {
+    top: 25%;
+    left: 15%;
+    right: 15%;
+    transform: translate(0%, -20%);
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 40em) {
+  .nav-header {
+    font-size: 2.4rem;
+  }
+
+  .index-container__content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .index-header {
+    font-size: 4.2rem;
+    margin-top: 0;
+    align-self: center;
+  }
+
+  .search-bar {
+    align-self: center;
+  }
+
+  .home-text {
+    margin-top: 3rem;
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .modal {
+    top: 25%;
+    left: 10%;
+    right: 10%;
+    transform: translate(0%, -20%);
+    max-width: 95%;
+    padding: 6rem;
+  }
+
+  .recipe-info__tab-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.4rem;
+  }
+
+  .recipe-info__tab {
+    padding: 2rem 2rem;
+  }
+
+  .recipe-info__content {
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    row-gap: 2rem;
+  }
+
+  .content-container {
+    padding: 0rem 2rem;
+  }
+
+  .about-page__text {
+    font-size: 1.8rem;
+    line-height: 2.6rem;
+    padding: 2.6rem;
+  }
+
+  .about-page__content {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}
+
+@media (max-width: 35em) {
+  h1 {
+    font-size: 4.2rem;
+    line-height: inherit;
+  }
+
+  .home-text {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    padding: 4rem;
+    text-align: center;
+  }
+
+  .box-2,
+  .box-3 {
+    display: none;
+  }
+
+  .short-description {
+    font-size: 1.6rem;
+  }
+  .recipe-info__tab {
+    min-width: 8rem;
+  }
+
+  .menu-item-name {
+    font-size: 66%;
+  }
+
+  .menu-list {
+    padding: 0;
+    gap: 1rem;
+    /* margin-top: 5rem; */
+  }
+
+  .menu-title {
+    margin: 0;
+    margin-top: 4rem;
+  }
+
+  .modal {
+    top: 25%;
+    left: 5%;
+    right: 5%;
+    transform: translate(0%, -20%);
+    max-width: 95%;
+    padding: 5rem;
+    gap: 5rem;
+  }
+  .close-modal {
+    top: 2.4rem;
+    right: 3.4rem;
+  }
+  .close-modal,
+  .menu-item-description {
+    font-size: 54%;
+  }
+  .container {
+    padding: 2rem 2.4rem;
+  }
+
+  .error-msg,
+  .error-msg a:link {
+    font-size: 2.4rem;
+  }
+
+  .error-msg {
+    padding: 4rem;
+  }
+}
+
+@media (max-width: 25.75em) {
+  .index-container {
+    gap: 2.2rem;
+  }
+
+  .index-container__content {
+    row-gap: 1.8rem;
+  }
+
+  .nav-open .nav-list {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.2s;
+    font-size: 3rem;
+    gap: 6rem;
+    padding-top: 5rem;
+    position: fixed;
+    top: 12%;
+    left: 0;
+    width: 100%;
+    height: 88vh;
+    background-color: #1c1c1cf8;
+    z-index: 5;
+
+    /* 1) Hide it */
+    opacity: 0;
+
+    /* 2) Make it unaccessible by mouse and keyboard */
+    pointer-events: none;
+
+    /* 3) Hide it from screen readers */
+    visibility: hidden;
+  }
+
+  .hamburger-icon {
+    display: block;
+    /* position: fixed; */
+    right: 3rem;
+    top: 3rem;
+  }
+
+  .recipe-info__tab {
+    min-width: 6rem;
+  }
+
+  .search-bar {
+    align-self: center;
+    width: -webkit-fill-available;
+  }
+
+  form.search-bar input[type='text'] {
+    width: 100%;
+  }
+
+  .error-msg a:link {
+    font-size: 2rem;
+  }
+
+  .error-msg {
+    font-size: 2rem;
+    padding: 2rem;
+  }
+
+  .about-page__text {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+}
+
+@media (max-width: 20em) {
+  .modal {
+    padding: 1rem;
+    gap: 2rem;
+  }
+}
+
+@media (max-height: 43.75em) {
+  .modal {
+    top: 0%;
+    transform: translate(0%, -2%);
+  }
+}
