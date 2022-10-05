@@ -27,11 +27,6 @@ app.use(middleware.requestLogger)
 app.use('/api/recipes', recipesRouter)
 app.use('/api/search', searchRouter)
 
-// for CI/CD health check
-app.get('/health', (req, res) => {
-  res.send('ok')
-})
-
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)
