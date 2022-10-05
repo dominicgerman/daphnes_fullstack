@@ -10,7 +10,7 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "build:ui": "rm -rf dist && cd daphnes_ui && rm -rf dist && rm -rf .parcel-cache && npm install && npm run build && cp -r dist ../",
-    "deploy": "flyctl deploy",
+    "deploy": "flyctl deploy --remote-only",
     "deploy:full": "npm run build:ui && npm run deploy",
     "logs:prod": "fly logs"
   },
