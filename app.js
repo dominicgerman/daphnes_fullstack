@@ -7,6 +7,7 @@ const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
 const recipesRouter = require('./controllers/recipes')
 const searchRouter = require('./controllers/search')
+const path = require('path')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -20,7 +21,7 @@ mongoose
   })
 
 app.use(cors())
-app.use(express.static('dist'))
+app.use(express.static('build'))
 app.use(express.json())
 app.use(middleware.requestLogger)
 
@@ -31,6 +32,10 @@ if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)
 }
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+})
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
