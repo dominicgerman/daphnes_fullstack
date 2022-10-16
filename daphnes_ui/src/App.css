@@ -1,0 +1,12 @@
+span {
+  border-bottom: 0.1rem solid #5e5e5e;
+}
+
+.about-link {
+  text-decoration: underline;
+}
+
+.activeTab {
+  border-bottom: 0.3rem solid #fff !important;
+  padding-bottom: 1rem;
+}
