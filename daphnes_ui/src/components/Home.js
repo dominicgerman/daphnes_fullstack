@@ -12,8 +12,8 @@ const Home = ({ show, toggleShow, menuItems }) => {
         {show ? <Modal menuItems={menuItems} toggleShow={toggleShow} /> : null}
       </StyledHomeText>
       <img alt="cocktail" src="/imgs/vieux-carre.jpg" />
-      <img alt="cocktail" src="/imgs/juliette.jpg" />
-      <img alt="cocktail" src="/imgs/fifth-of-never.jpg" />
+      <img className="homeImg" alt="cocktail" src="/imgs/juliette.jpg" />
+      <img className="homeImg" alt="cocktail" src="/imgs/fifth-of-never.jpg" />
     </HomeContainer>
   )
 }

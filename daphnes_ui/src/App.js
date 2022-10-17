@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Routes, Route, NavLink } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 import Home from './components/Home'
 import RecipeList from './components/RecipeList'
 import Recipe from './components/Recipe'
-import Blog from './components/Blog'
 import About from './components/About'
 import Footer from './components/Footer'
 
@@ -24,8 +23,14 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [show, setShow] = useState(false)
+  const [navOpen, setNavOpen] = useState(false)
 
   const navigate = useNavigate()
+  const location = useLocation()
+
+  useEffect(() => {
+    setNavOpen(false)
+  }, [location])
 
   useEffect(() => {
     axios.get(`/api/recipes`).then((response) => {
@@ -73,7 +78,7 @@ const App = () => {
     <Container>
       <StyledNav>
         <NavHeader>Daphne's</NavHeader>
-        <StyledNavLinksContainer>
+        <StyledNavLinksContainer className={navOpen ? 'nav-open' : ''}>
           <NavLink
             style={({ isActive }) =>
               isActive
@@ -113,25 +118,26 @@ const App = () => {
                   }
                 : { paddingBottom: '0.5rem' }
             }
-            to="/blog"
-          >
-            Blog
-          </NavLink>
-          <NavLink
-            style={({ isActive }) =>
-              isActive
-                ? {
-                    fontWeight: 700,
-                    borderBottom: '1px solid #fff',
-                    paddingBottom: '0.5rem',
-                  }
-                : { paddingBottom: '0.5rem' }
-            }
             to="/about"
           >
             About
           </NavLink>
         </StyledNavLinksContainer>
+        <input
+          class="checkbox"
+          type="checkbox"
+          checked={navOpen}
+          onChange={() => setNavOpen(!navOpen)}
+        />
+        <div class="hamburger-lines">
+          <span class="line line1"></span>
+          <span class="line line2"></span>
+          <span class="line line3"></span>
+        </div>
+        {/* <button style={{ border: 'none' }} onClick={() => setNavOpen(!navOpen)}>
+          <span className="hamburger-icon line1"></span>
+          <span className="hamburger-icon line2"></span>
+        </button> */}
       </StyledNav>
 
       <Routes>
@@ -177,7 +183,6 @@ const App = () => {
             />
           }
         />
-        <Route path="/blog" element={<Blog />} />
         <Route path="/about" element={<About />} />
       </Routes>
       <Footer handler={getRandomRecipe} />

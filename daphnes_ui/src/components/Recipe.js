@@ -4,10 +4,10 @@ import { NavigateBack } from './styles/StyledLinks.styled'
 import {
   BodyContainer,
   ContentContainer,
+  ImgContainer,
   RecipeTextContainer,
 } from './styles/StyledContainers.styled'
 import { Title, StyledDescription } from './styles/StyledText.styled'
-import { FullSizeImg } from './styles/StyledImages.styled'
 
 const Recipe = ({ recipes, handleTagClick }) => {
   const { id } = useParams()
@@ -28,7 +28,9 @@ const Recipe = ({ recipes, handleTagClick }) => {
             handleTagClick={handleTagClick}
           />
         </RecipeTextContainer>
-        <FullSizeImg src={`/imgs/${recipe?.imageCover}`} alt="cocktail" />
+        <ImgContainer>
+          <img src={`/imgs/${recipe?.imageCover}`} alt="cocktail" />
+        </ImgContainer>
       </ContentContainer>
     </BodyContainer>
   )

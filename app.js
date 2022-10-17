@@ -27,6 +27,8 @@ app.use(middleware.requestLogger)
 
 app.use('/api/recipes', recipesRouter)
 app.use('/api/search', searchRouter)
+// app.use('/api/login', loginRouter)
+// app.use('/api/admin', adminRouter)
 
 if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')

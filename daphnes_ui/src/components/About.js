@@ -1,5 +1,5 @@
 import {
-  ContentContainer,
+  AboutContentContainer,
   BodyContainer,
 } from './styles/StyledContainers.styled'
 import { FullSizeImg } from './styles/StyledImages.styled'
@@ -9,7 +9,7 @@ import { Title } from './styles/StyledText.styled'
 const About = () => (
   <BodyContainer>
     <Title>Our Founder</Title>
-    <ContentContainer>
+    <AboutContentContainer>
       <>
         <AboutPageParagraph>
           <a
@@ -38,7 +38,7 @@ const About = () => (
         </AboutPageParagraph>
       </>
       <FullSizeImg src="/imgs/our_founder.jpg" alt="daphne the cat" />
-    </ContentContainer>
+    </AboutContentContainer>
   </BodyContainer>
 )
 

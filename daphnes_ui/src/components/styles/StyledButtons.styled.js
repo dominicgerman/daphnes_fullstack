@@ -21,12 +21,22 @@ export const MenuButton = styled.button`
   line-height: 3.6rem;
   border: none;
   border-bottom: 0.1rem solid #fff;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.2rem;
   color: #fff;
   background-color: #1c1c1c;
   &:hover {
     color: #717171;
     border-bottom: 0.1rem solid #717171;
+  }
+  @media (max-width: 80em) {
+    font-size: 2rem;
+    line-height: inherit;
+  }
+  @media (max-width: 50em) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 25.75em) {
+    font-size: 2rem;
   }
 `
 
@@ -38,8 +48,11 @@ export const CloseMenuButton = styled.button`
   font-family: Barlow, sans-serif;
   font-size: 2.4rem;
   position: absolute;
-  top: 4.4rem;
+  top: 5.2rem;
   right: 6.4rem;
+  @media (max-width: 35em) {
+    font-size: 54%;
+  }
 `
 
 export const TabButton = styled.button`
@@ -54,10 +67,17 @@ export const TabButton = styled.button`
   &:hover {
     color: #5e5e5e;
   }
+  @media (max-width: 40em) {
+    padding: 2rem 2rem;
+  }
+  @media (max-width: 35em) {
+    min-width: 8rem;
+  }
 `
 
 export const FooterButton = styled.button`
   color: #5e5e5e;
+  margin-top: 6rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 1.8rem;

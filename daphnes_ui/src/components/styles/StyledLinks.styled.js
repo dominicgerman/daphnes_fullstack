@@ -15,6 +15,9 @@ export const MenuItemLink = styled(Link)`
   &:hover {
     color: #5e5e5e;
   }
+  @media (max-width: 35em) {
+    font-size: 60%;
+  }
 `
 
 export const StyledRecipeLink = styled(Link)`

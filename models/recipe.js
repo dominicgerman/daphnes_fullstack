@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const slugify = require('slugify')
 
 const recipeSchema = new mongoose.Schema(
   {
@@ -8,12 +9,20 @@ const recipeSchema = new mongoose.Schema(
       unique: true,
     },
     slug: String,
-    description: String,
-    menuDescription: String,
-    strength: String,
+    description: {
+      type: String,
+      required: [true, 'A recipe must have a description'],
+    },
+    menuDescription: {
+      type: String,
+      required: [true, 'A recipe must have a menu description'],
+    },
     similarTo: [{ type: mongoose.Schema.ObjectId, ref: 'Recipe' }],
     tags: [String],
-    about: String,
+    about: {
+      type: String,
+      required: [true, 'A recipe must have an About paragraph'],
+    },
     ingredients: [
       {
         name: String,
@@ -24,24 +33,18 @@ const recipeSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A recipe must have instructions'],
     },
-    notes: {
-      type: String,
-    },
-    difficulty: {
-      type: String,
-      required: [true, 'A recipe must have a difficulty'],
-      enum: {
-        values: ['easy', 'intermediate', 'advanced'],
-        message: 'Difficulty must be easy, intermediate or advanced',
-      },
-    },
     imageCover: {
       type: String,
+      required: [true, 'A recipe must have an image path'],
     },
     createdAt: {
       type: Date,
       default: Date.now(),
       select: false,
+    },
+    menuItem: {
+      type: Boolean,
+      default: false,
     },
   },
   // virtual fields are not stored in the database; they're calculated in real-time (like averages)

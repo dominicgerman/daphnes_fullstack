@@ -10,3 +10,93 @@ span {
   border-bottom: 0.3rem solid #fff !important;
   padding-bottom: 1rem;
 }
+.checkbox {
+  display: none;
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  top: 26px;
+  right: 26px;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.hamburger-lines {
+  display: none;
+  height: 20px;
+  width: 26px;
+  position: absolute;
+  top: 30px;
+  right: 26px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.line {
+  display: none;
+  height: 2px;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.line1 {
+  transform-origin: 0% 0%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.line2 {
+  transition: transform 0.1s ease-in-out;
+}
+
+.line3 {
+  transform-origin: 0% 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+input[type='checkbox']:checked ~ .menu-items {
+  transform: translateX(0);
+}
+
+input[type='checkbox']:checked ~ .hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+input[type='checkbox']:checked ~ .hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+input[type='checkbox']:checked ~ .hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 40em) {
+  .homeImg {
+    display: none;
+  }
+}
+
+@media (max-width: 25.75em) {
+  .checkbox {
+    display: block !important;
+  }
+  .hamburger-lines {
+    display: flex !important;
+  }
+  .line {
+    display: block !important;
+  }
+}
+
+@media (max-width: 25.75em) {
+  .nav-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+}
