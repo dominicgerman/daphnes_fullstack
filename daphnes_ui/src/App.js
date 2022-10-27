@@ -1,13 +1,18 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import { Routes, Route, NavLink } from 'react-router-dom'
 import { useNavigate, useLocation } from 'react-router-dom'
 
 import Home from './components/Home'
+import Login from './components/Login'
 import RecipeList from './components/RecipeList'
 import Recipe from './components/Recipe'
 import About from './components/About'
 import Footer from './components/Footer'
+import PrivateRoutes from './components/PrivateRoutes'
+
+import recipeService from './services/recipes'
+import loginService from './services/login'
 
 import './App.css'
 import {
@@ -16,14 +21,21 @@ import {
   StyledNavLinksContainer,
 } from './components/styles/StyledContainers.styled'
 import { NavHeader } from './components/styles/StyledText.styled'
+import Admin from './components/Admin'
 
 const App = () => {
+  // CLIENT STATE
   const [recipes, setRecipes] = useState([])
   const [filter, setFilter] = useState('')
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [show, setShow] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [user, setUser] = useState(null)
+  const [message, setMessage] = useState(null)
+  const [file, setFile] = useState(null)
 
   const navigate = useNavigate()
   const location = useLocation()
@@ -33,10 +45,87 @@ const App = () => {
   }, [location])
 
   useEffect(() => {
-    axios.get(`/api/recipes`).then((response) => {
-      setRecipes(response.data)
+    const loggedUserJSON = window.localStorage.getItem('loggedAdmin')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      recipeService.setToken(user.token)
+    }
+  }, [])
+
+  useEffect(() => {
+    recipeService.getAll().then((response) => {
+      setRecipes(response)
     })
   }, [])
+
+  const handleLogin = async (event) => {
+    event.preventDefault()
+
+    try {
+      const user = await loginService.login({
+        username,
+        password,
+      })
+      window.localStorage.setItem('loggedAdmin', JSON.stringify(user))
+      recipeService.setToken(user.token)
+      setUser(user)
+      setUsername('')
+      setPassword('')
+      navigate('/admin')
+    } catch (exception) {
+      setMessage('Wrong credentials! 😅')
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    }
+  }
+
+  const inputRef = useRef(null)
+
+  const addRecipe = async (recipeObject) => {
+    try {
+      const returnedRecipe = await recipeService.create(recipeObject)
+      setRecipes(recipes.concat(returnedRecipe))
+      setMessage(`Added new recipe: ${recipeObject.name}`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    } catch (error) {
+      setMessage(`Error: ${error.message}`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    }
+  }
+
+  const addPhoto = async (photo) => {
+    try {
+      await recipeService.addPhoto(photo)
+    } catch (error) {
+      setMessage(`Error: ${error.message}`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    }
+  }
+
+  const removeRecipe = async (id) => {
+    try {
+      await recipeService.remove(id)
+      const updatedRecipes = await recipeService.getAll()
+      setRecipes(updatedRecipes)
+      setMessage(`New recipe created!`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    } catch (error) {
+      setMessage(`Error: ${error.message}`)
+      setTimeout(() => {
+        setMessage(null)
+      }, 5000)
+    }
+  }
 
   useEffect(() => {
     if (searchTerm.length > 0) {
@@ -73,6 +162,8 @@ const App = () => {
   }
 
   filteredRecipes = searchResults.length > 0 ? searchResults : filteredRecipes
+
+  // ADMIN STATE
 
   return (
     <Container>
@@ -124,20 +215,16 @@ const App = () => {
           </NavLink>
         </StyledNavLinksContainer>
         <input
-          class="checkbox"
+          className="checkbox"
           type="checkbox"
           checked={navOpen}
           onChange={() => setNavOpen(!navOpen)}
         />
-        <div class="hamburger-lines">
-          <span class="line line1"></span>
-          <span class="line line2"></span>
-          <span class="line line3"></span>
+        <div className="hamburger-lines">
+          <span className="line line1"></span>
+          <span className="line line2"></span>
+          <span className="line line3"></span>
         </div>
-        {/* <button style={{ border: 'none' }} onClick={() => setNavOpen(!navOpen)}>
-          <span className="hamburger-icon line1"></span>
-          <span className="hamburger-icon line2"></span>
-        </button> */}
       </StyledNav>
 
       <Routes>
@@ -152,16 +239,6 @@ const App = () => {
             />
           }
         />
-        {/* <Route
-          path="/home"
-          element={
-            <Home
-              show={show}
-              toggleShow={() => setShow(!show)}
-              menuItems={menuItems}
-            />
-          }
-        /> */}
         <Route
           path="/recipes/:id"
           element={
@@ -184,6 +261,37 @@ const App = () => {
           }
         />
         <Route path="/about" element={<About />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              setPassword={setPassword}
+              setUsername={setUsername}
+              password={password}
+              username={username}
+              handleLogin={handleLogin}
+              message={message}
+            />
+          }
+        />
+        <Route element={<PrivateRoutes user={user} />}>
+          <Route
+            path="/admin"
+            element={
+              <Admin
+                setUser={setUser}
+                createRecipe={addRecipe}
+                deleteRecipe={removeRecipe}
+                file={file}
+                setFile={setFile}
+                inputRef={inputRef}
+                recipes={recipes}
+                message={message}
+                addPhoto={addPhoto}
+              />
+            }
+          />
+        </Route>
       </Routes>
       <Footer handler={getRandomRecipe} />
     </Container>

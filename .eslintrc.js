@@ -1,18 +1,28 @@
 module.exports = {
   env: {
     node: true,
+    browser: true,
     commonjs: true,
     es2021: true,
+    jest: true,
+    'cypress/globals': true,
   },
   extends: 'eslint:recommended',
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
   },
+  plugins: ['react', 'jest', 'cypress'],
   rules: {
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
-    quotes: ['error', 'single'],
+    quotes: [
+      'warn',
+      'single',
+      {
+        allowTemplateLiterals: true,
+      },
+    ],
     semi: ['error', 'never'],
     eqeqeq: 'error',
     'no-trailing-spaces': 'error',

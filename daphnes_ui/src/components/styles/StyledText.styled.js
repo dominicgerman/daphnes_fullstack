@@ -2,6 +2,10 @@ import styled from 'styled-components'
 
 // GENERAL
 
+export const StyledText = styled.span`
+  font-size: 1.6rem;
+`
+
 export const NavHeader = styled.h1`
   font-weight: 700;
   font-size: 3.4rem;
@@ -24,6 +28,11 @@ export const Title = styled.h1`
     line-height: inherit;
   }
 `
+export const StyledSubHeading = styled(Title)`
+  font-size: 5.2rem;
+  line-height: inherit;
+`
+
 export const StyledParagraph = styled.p`
   font-size: 2rem;
   line-height: 3.2rem;
@@ -46,7 +55,7 @@ export const StyledThumbnailText = styled.p`
 `
 
 // HOME
-export const StyledHomeText = styled.p`
+export const StyledHomeText = styled.div`
   grid-column: span 3;
   font-size: 3rem;
   font-weight: 400;
@@ -135,4 +144,15 @@ export const AboutPageParagraph = styled(StyledParagraph)`
     line-height: 2.6rem;
     padding: 2.6rem;
   }
+`
+
+// NOTIFICATIONS
+// export const StyledErrorMessage = styled.div`
+//   font-size: 3rem;
+//   line-height: 3.6rem;
+// `
+
+export const StyledNotificationMessage = styled.div`
+  font-size: 3rem;
+  line-height: 3.6rem;
 `

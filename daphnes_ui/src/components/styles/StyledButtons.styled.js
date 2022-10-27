@@ -85,3 +85,11 @@ export const FooterButton = styled.button`
   border: none;
   cursor: pointer;
 `
+
+export const SubmitButton = styled.button`
+  font-size: 1.8rem;
+  padding: 0.6rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  border-radius: 0.5rem;
+`

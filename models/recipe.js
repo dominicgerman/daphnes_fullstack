@@ -35,7 +35,7 @@ const recipeSchema = new mongoose.Schema(
     },
     imageCover: {
       type: String,
-      required: [true, 'A recipe must have an image path'],
+      default: 'our_founder.jpg',
     },
     createdAt: {
       type: Date,
@@ -45,6 +45,10 @@ const recipeSchema = new mongoose.Schema(
     menuItem: {
       type: Boolean,
       default: false,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
   },
   // virtual fields are not stored in the database; they're calculated in real-time (like averages)

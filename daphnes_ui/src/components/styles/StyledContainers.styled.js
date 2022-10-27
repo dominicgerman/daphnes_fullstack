@@ -299,3 +299,10 @@ export const AboutContentContainer = styled(ContentContainer)`
     align-items: center;
   }
 `
+export const StyledInputContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  padding: 1rem;
+  font-size: 2rem;
+  align-items: center;
+`
