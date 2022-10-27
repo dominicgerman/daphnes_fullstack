@@ -33,8 +33,6 @@ recipesRouter.get('/:id', async (request, response) => {
 })
 
 recipesRouter.post('/', async (request, response) => {
-  console.log(request.file)
-  console.log(request.body)
   const body = request.body
   const token = getTokenFrom(request)
   const decodedToken = jwt.verify(token, process.env.SECRET)
@@ -51,7 +49,7 @@ recipesRouter.post('/', async (request, response) => {
     tags: body.tags || [],
     about: body.about,
     ingredients: body.ingredients,
-    imageCover: body.imageCover,
+    imageCover: body.imageCover || 'our_founder.jpg',
     instructions: body.instructions,
     menuItem: body.menuItem || false,
     user: user._id,

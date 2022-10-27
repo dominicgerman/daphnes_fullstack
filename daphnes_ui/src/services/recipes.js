@@ -41,7 +41,6 @@ const addPhoto = async (photo) => {
   }
 
   const response = await axios.post(`${baseUrl}/imgs`, photo, config)
-  console.log(response)
   return response.data
 }
 

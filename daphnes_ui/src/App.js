@@ -131,7 +131,6 @@ const App = () => {
     if (searchTerm.length > 0) {
       axios.get(`/api/search/${searchTerm}`).then((response) => {
         setSearchResults(response.data.data)
-        console.log('effect fired!')
       })
     }
   }, [searchTerm])

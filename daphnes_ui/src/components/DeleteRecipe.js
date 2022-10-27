@@ -5,23 +5,11 @@ import { useState } from 'react'
 const DeleteRecipe = ({ deleteRecipe, recipes }) => {
   const [recipeToDelete, setRecipeToDelete] = useState('')
 
-  // let selectedItemId
-
   const handleFormSubmit = (event) => {
     event.preventDefault()
     window.confirm(`Confirm deletion of recipe?`)
     deleteRecipe(recipeToDelete)
   }
-
-  // const handleChange = (event) => {
-  //   console.log('handleChange --- event fired')
-  //   selectedItemId = event.target.value
-  //   const selectedRecipe = recipes.filter((r) => r.id === selectedItemId)[0]
-  //   setRecipeToDelete(selectedRecipe)
-  //   console.log(recipeToDelete)
-  // }
-
-  console.log(recipeToDelete)
 
   return (
     <div style={{ marginBottom: '6rem' }}>
