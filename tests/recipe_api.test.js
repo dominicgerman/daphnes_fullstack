@@ -15,7 +15,7 @@ beforeEach(async () => {
   await Promise.all(promiseArray)
 })
 
-describe('when notes have been initialized', () => {
+describe('when recipes have been initialized', () => {
   test('recipes are returned as json', async () => {
     await api
       .get('/api/recipes')

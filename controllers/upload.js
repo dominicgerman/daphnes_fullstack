@@ -1,4 +1,5 @@
 const multer = require('multer')
+const logger = require('../utils/logger')
 const uploadRouter = require('express').Router()
 
 const multerStorage = multer.diskStorage({
