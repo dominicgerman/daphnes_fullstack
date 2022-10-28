@@ -13,7 +13,7 @@ beforeEach(async () => {
   )
   const promiseArray = recipeObjects.map((rec) => rec.save())
   await Promise.all(promiseArray)
-})
+}, 100000)
 
 describe('when recipes have been initialized', () => {
   test('recipes are returned as json', async () => {
