@@ -27,7 +27,7 @@ jobs:
         run: |
           npm run start:test &
           sleep 5 &&
-          curl http://localhost:port -I
+          curl http://localhost:8080 -I
       - name: test
         run: npm run test
   deploy:
