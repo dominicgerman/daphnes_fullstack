@@ -21,13 +21,13 @@ describe('when recipes have been initialized', () => {
       .get('/api/recipes')
       .expect(200)
       .expect('Content-Type', /application\/json/)
-  }, 100000)
+  }, 1000000)
 
   test('all recipes are returned', async () => {
     const response = await api.get('/api/recipes')
 
     expect(response.body).toHaveLength(helper.initialRecipes.length)
-  }, 100000)
+  }, 1000000)
 
   test('a specific recipe is returned', async () => {
     const response = await api.get('/api/recipes')
@@ -35,7 +35,7 @@ describe('when recipes have been initialized', () => {
     const names = response.body.map((r) => r.name)
 
     expect(names).toContain('Rum Old Fashioned')
-  }, 100000)
+  }, 1000000)
 })
 
 describe('viewing a specific recipe', () => {
@@ -52,7 +52,7 @@ describe('viewing a specific recipe', () => {
     const processedRecipeToView = JSON.parse(JSON.stringify(recipeToView))
 
     expect(resultRecipe.body).toEqual(processedRecipeToView)
-  }, 100000)
+  }, 1000000)
 
   test('fails with statuscode 404 if recipe does not exist', async () => {
     const validNonexistingId = await helper.nonExistantId()
