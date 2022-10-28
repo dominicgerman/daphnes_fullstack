@@ -8,7 +8,7 @@ module.exports = {
     'cypress/globals': true,
   },
   extends: ['eslint:recommended', 'plugin:react/recommended'],
-  overrides: [{ files: ['**/*.js'] }],
+  overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
   },
