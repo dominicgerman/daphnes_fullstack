@@ -9,7 +9,7 @@ import {
 import { TabButton } from '../styles/StyledButtons.styled'
 
 const RecipeTabs = ({ recipe, recipes, handleTagClick }) => {
-  const [activeTab, setActiveTab] = useState('tab1')
+  const [activeTab, setActiveTab] = useState('tab2')
 
   return (
     <>
