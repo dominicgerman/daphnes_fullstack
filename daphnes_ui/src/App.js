@@ -154,6 +154,7 @@ const App = () => {
   const getRandomRecipe = () => {
     const id = recipes[Math.floor(Math.random() * (recipes.length - 1))].id
     navigate(`/recipes/${id}`)
+    window.scrollTo(0, 120)
   }
 
   const handleTagClick = (tag) => {
